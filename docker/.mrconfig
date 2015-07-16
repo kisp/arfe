@@ -1,0 +1,5 @@
+[quicklisp/local-projects/argsem-soundness]
+checkout = git clone 'https://github.com/kisp/argsem-soundness.git' 'argsem-soundness'
+
+[quicklisp/local-projects/arfe]
+checkout = git clone 'https://github.com/kisp/arfe.git' 'arfe'
