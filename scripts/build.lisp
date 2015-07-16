@@ -16,6 +16,7 @@
   (in-package :arfe))
 
 (push 'in-package-arfe *init-hooks*)
+(push 'sb-ext:enable-debugger *init-hooks*)
 
 (sb-ext:save-lisp-and-die "arfe"
                           ;; :toplevel #'day-plan::day-plan
