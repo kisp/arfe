@@ -9,3 +9,6 @@ checkout = git clone 'https://github.com/kisp/graph-tgf.git' 'graph-tgf'
 
 [quicklisp/local-projects/graph-adj]
 checkout = git clone 'https://github.com/kisp/graph-adj.git' 'graph-adj'
+
+[quicklisp/local-projects/trivial-graph-canonization]
+checkout = git clone 'https://github.com/kisp/trivial-graph-canonization.git' 'trivial-graph-canonization'
