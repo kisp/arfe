@@ -3,3 +3,6 @@ checkout = git clone 'https://github.com/kisp/argsem-soundness.git' 'argsem-soun
 
 [quicklisp/local-projects/arfe]
 checkout = git clone 'https://github.com/kisp/arfe.git' 'arfe'
+
+[quicklisp/local-projects/graph-tgf]
+checkout = git clone 'https://github.com/kisp/graph-tgf.git' 'graph-tgf'
