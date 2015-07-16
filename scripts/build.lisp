@@ -8,7 +8,7 @@
 
 (push :standalone *features*)
 
-(asdf:oos 'asdf:load-op :arfe)
+(ql:quickload "arfe")
 
 (require 'sb-aclrepl)
 
