@@ -13,7 +13,10 @@
                (:file "package")
                (:file "arfe" :depends-on ("package"))
                )
-  :depends-on (:alexandria))
+  :depends-on (:alexandria
+               :argsem-soundness :graph-adj
+               :trivial-graph-canonization
+               :graph-apx :graph-tgf))
 
 (defmethod perform ((op test-op)
                     (system (eql (find-system :arfe))))
