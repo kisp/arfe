@@ -1,4 +1,4 @@
-#!/usr/bin/env sbcl --script
+#! /usr/bin/sbcl --script
 
 (defun string-starts-with (string prefix)
   (eql 0 (search prefix string)))
