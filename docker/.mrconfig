@@ -12,3 +12,6 @@ checkout = git clone 'https://github.com/kisp/graph-adj.git' 'graph-adj'
 
 [quicklisp/local-projects/trivial-graph-canonization]
 checkout = git clone 'https://github.com/kisp/trivial-graph-canonization.git' 'trivial-graph-canonization'
+
+[quicklisp/local-projects/graph-apx]
+checkout = git clone 'https://github.com/kisp/graph-apx.git' 'graph-apx'
