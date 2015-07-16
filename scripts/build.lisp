@@ -12,6 +12,11 @@
 
 (require 'sb-aclrepl)
 
+(defun in-package-arfe ()
+  (in-package :arfe))
+
+(push 'in-package-arfe *init-hooks*)
+
 (sb-ext:save-lisp-and-die "arfe"
                           ;; :toplevel #'day-plan::day-plan
                           :executable t
