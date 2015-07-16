@@ -26,6 +26,6 @@ ADD docker/.gitconfig .gitconfig
 
 RUN mr checkout
 
-# RUN cd /root/quicklisp/local-projects/arfe && git pull   && ./configure --prefix=/usr/local && make && make install && make clean
+RUN cd /root/quicklisp/local-projects/arfe && git pull   && ./configure --prefix=/usr/local && make && make install && make clean
 
 ENV CDPATH /root/quicklisp/local-projects
