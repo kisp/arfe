@@ -2,6 +2,7 @@
 # prefix = something will be inserted here
 
 bindir = ${prefix}/bin
+libdir = ${prefix}/lib/arfe
 
 MKDIR_P = /bin/mkdir -p
 
@@ -12,7 +13,9 @@ all:
 .PHONY:install
 install:
 	$(MKDIR_P) "$(DESTDIR)$(bindir)"
-	install -m 755 arfe "$(DESTDIR)$(bindir)"
+	$(MKDIR_P) "$(DESTDIR)$(libdir)"
+	install -m 755 wrapper/arfe.in "$(DESTDIR)$(bindir)/arfe"
+	install -m 755 arfe "$(DESTDIR)$(libdir)"
 
 .PHONY:clean
 clean:
