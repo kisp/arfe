@@ -6,3 +6,6 @@ checkout = git clone 'https://github.com/kisp/arfe.git' 'arfe'
 
 [quicklisp/local-projects/graph-tgf]
 checkout = git clone 'https://github.com/kisp/graph-tgf.git' 'graph-tgf'
+
+[quicklisp/local-projects/graph-adj]
+checkout = git clone 'https://github.com/kisp/graph-adj.git' 'graph-adj'
