@@ -10,6 +10,8 @@
 
 (asdf:oos 'asdf:load-op :arfe)
 
+(require 'sb-aclrepl)
+
 (sb-ext:save-lisp-and-die "arfe"
                           ;; :toplevel #'day-plan::day-plan
                           :executable t
