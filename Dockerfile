@@ -22,6 +22,7 @@ RUN apt-get -y install nvi
 
 ADD docker/.screenrc .screenrc
 ADD docker/.mrconfig .mrconfig
+ADD docker/.gitconfig .gitconfig
 
 RUN mr checkout
 

@@ -1,0 +1,13 @@
+[user]
+	name = Kilian Sprotte
+	email = kilian.sprotte@gmail.com
+[alias]
+	st = status
+	com = commit
+	co = checkout
+[color]
+	ui = auto
+[push]
+	default = simple
+[credential]
+	helper = cache --timeout=36000
