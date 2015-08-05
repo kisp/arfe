@@ -4,5 +4,6 @@
   (:use :common-lisp :alexandria :argsem-soundness
    :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
    :graph :graph-dot
-   :lparallel)
+   :lparallel
+        :arfe.generate-non-isomorphic)
   (:export))

@@ -10,7 +10,8 @@
                  (vers (merge-pathnames "version.lisp-expr" *load-truename*))
                (read vers))
   :components ((:static-file "version" :pathname #p"version.lisp-expr")
-               (:file "package")
+               (:file "generate")
+               (:file "package" :depends-on ("generate"))
                (:file "arfe" :depends-on ("package"))
                )
   :depends-on (:alexandria
