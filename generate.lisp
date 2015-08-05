@@ -46,3 +46,11 @@
                     (* 100 (/ done size))
                     (hash-table-count hash))))
         hash))))
+
+(defun write-hash-to-stream (hash order stream)
+  (with-standard-io-syntax
+    (maphash-values
+     (lambda (value)
+       (prin1 (cons order value) stream)
+       (terpri stream))
+     hash)))
