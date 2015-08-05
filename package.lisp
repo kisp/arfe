@@ -3,5 +3,6 @@
 (defpackage :arfe
   (:use :common-lisp :alexandria :argsem-soundness
    :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
-   :graph :graph-dot)
+   :graph :graph-dot
+   :lparallel)
   (:export))

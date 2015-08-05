@@ -16,7 +16,8 @@
   :depends-on (:alexandria
                :argsem-soundness :graph-adj
                :trivial-graph-canonization
-               :graph-apx :graph-tgf :graph-dot))
+               :graph-apx :graph-tgf :graph-dot
+               :lparallel))
 
 (defmethod perform ((op test-op)
                     (system (eql (find-system :arfe))))
