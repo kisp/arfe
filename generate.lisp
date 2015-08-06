@@ -45,7 +45,13 @@
             (format t "~10,1F % done. found ~D~%"
                     (* 100 (/ done size))
                     (hash-table-count hash))))
-        hash))))
+        (values
+         (let (list)
+           (maphash-values
+            (lambda (value) (push (cons order value) list))
+            hash)
+           list)
+         hash)))))
 
 (defun write-hash-to-stream (hash order stream)
   (with-standard-io-syntax
