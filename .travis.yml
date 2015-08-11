@@ -26,6 +26,10 @@ install:
   - curl -L http://pauldist.kisp.in/pauldist.txt > ~/quicklisp/dists/pauldist/distinfo.txt
   - touch  ~/quicklisp/dists/pauldist/enabled.txt
   - cd ~/quicklisp/local-projects && git clone https://github.com/kisp/argsem-soundness.git
+  - cd ~/quicklisp/local-projects && git clone https://github.com/kisp/graph-adj.git
+  - cd ~/quicklisp/local-projects && git clone https://github.com/kisp/graph-tgf.git
+  - cd ~/quicklisp/local-projects && git clone https://github.com/kisp/graph-apx.git
+  - cd ~/quicklisp/local-projects && git clone https://github.com/kisp/trivial-graph-canonization.git
   #- git clone --depth=1 git://github.com/trivial-features/trivial-features.git ~/lisp/trivial-features
   #- git clone git://common-lisp.net/projects/alexandria/alexandria.git ~/lisp/alexandria
   #- git clone --depth=1 git://github.com/cl-babel/babel.git ~/lisp/babel
