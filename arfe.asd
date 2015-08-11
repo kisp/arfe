@@ -11,7 +11,8 @@
                (read vers))
   :components ((:static-file "version" :pathname #p"version.lisp-expr")
                (:file "generate")
-               (:file "package" :depends-on ("generate"))
+               (:file "dc-ds-eq")
+               (:file "package" :depends-on ("generate" "dc-ds-eq"))
                (:file "arfe" :depends-on ("package"))
                )
   :depends-on (:alexandria
