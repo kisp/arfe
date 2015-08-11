@@ -2,4 +2,4 @@
 
 (defpackage :arfe-test
   (:use :common-lisp :myam :alexandria
-   :arfe))
+   :arfe :arfe.dc-ds-eq))
