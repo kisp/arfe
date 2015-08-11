@@ -2,4 +2,4 @@
 
 (defpackage :arfe-test
   (:use :common-lisp :myam :alexandria
-   :arfe :arfe.dc-ds-eq))
+   :arfe :arfe.dc-ds-eq :arfe.generate-non-isomorphic))

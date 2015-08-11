@@ -4,6 +4,9 @@
 
 (defsuite* :arfe-test)
 
+(defun set-equal* (a b)
+  (set-equal a b :test #'equal))
+
 (defun set-set-equal (a b)
   (set-equal a b :test (lambda (a b) (set-equal a b :test #'equal))))
 
@@ -21,3 +24,15 @@
          '(((:DS :PR)) ((:DS :ST)) ((:DC :ST)) ((:DC :PR) (:DC :CO))
            ((:DS :CO) (:DS :GR) (:DC :GR)))
          (estimate-dc-ds-eq-classes)))))
+
+(deftest generate-non-isomorphic
+  (with-init-kernel-handler
+    (is (eql 2 (length (generate-non-isomorphic 1))))
+    (is (eql 10 (length (generate-non-isomorphic 2))))
+    (is (eql 104 (length (generate-non-isomorphic 3))))))
+
+(deftest generate-non-isomorphic.irreflexive
+  (with-init-kernel-handler
+    (is (eql 1 (length (generate-non-isomorphic 1 :irreflexive t))))
+    (is (eql 3 (length (generate-non-isomorphic 2 :irreflexive t))))
+    (is (eql 16 (length (generate-non-isomorphic 3 :irreflexive t))))))
