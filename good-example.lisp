@@ -10,7 +10,8 @@
   (:import-from :metabang.bind #:bind)
   (:export
    #:find-good-example
-   #:good-example-p))
+   #:good-example-p
+   #:list-good-examples))
 
 (in-package :arfe.good-example)
 
