@@ -19,10 +19,14 @@
   (uiop:with-temporary-file (:stream stream :pathname pathname)
     (to-dot graph :stream stream)
     :close-stream
-    (uiop:run-program "set -o pipefail ; dot -Tsvg -Grankdir=LR | sed -e '1,3d'"
-                      :input pathname
-                      :output :string
-                      :error-output :string)))
+    (multiple-value-bind (output error-output exit-code)
+        (uiop:run-program "set -o pipefail ; dot -Tsvg -Grankdir=LR | sed -e '1,3d'"
+                          :input pathname
+                          :output :string
+                          :error-output :string)
+      (unless (zerop exit-code)
+        (error "~A" (list output error-output exit-code)))
+      output)))
 
 (defun gtfl-output-graph (graph)
   (gtfl:gtfl-out (:p (who:str (output-graph graph)))))
