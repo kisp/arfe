@@ -22,6 +22,13 @@ RUN apt-get -y install nvi
 
 RUN apt-get -y install netcat
 
+RUN apt-get -y install build-essential
+
+RUN wget http://pallini.di.uniroma1.it/nauty25r9.tar.gz
+RUN tar xzf nauty25r9.tar.gz
+RUN cd nauty25r9 && ./configure && make && make install
+RUN rm -rf nauty25r9.tar.gz nauty25r9
+
 ADD docker/.screenrc .screenrc
 ADD docker/.mrconfig .mrconfig
 ADD docker/.gitconfig .gitconfig
