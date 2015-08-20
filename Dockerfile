@@ -1,14 +1,31 @@
-FROM davazp/quicksbcl
+FROM debian:latest
 
-ADD docker/quicklisp-update.sh /usr/local/bin/quicklisp-update.sh
+# Install dependencies from Debian repositories
+RUN apt-get update && apt-get install -y make wget bzip2
 
-RUN quicklisp-update.sh
+# Install SBCL from the tarball binaries.
+RUN wget http://prdownloads.sourceforge.net/sbcl/sbcl-1.2.9-x86-64-linux-binary.tar.bz2 \
+    -O /tmp/sbcl.tar.bz2 && \
+    mkdir /tmp/sbcl && \
+    tar jxvf /tmp/sbcl.tar.bz2 --strip-components=1 -C /tmp/sbcl/ && \
+    cd /tmp/sbcl && \
+    sh install.sh && \
+    cd / && \
+    rm -rf /tmp/sbcl*
 
-RUN rm -fr /tmp/install.lisp /tmp/quicklisp.lisp /tmp/sbcl /tmp/sbcl.tar.bz2
+ENV HOME /root
+
+WORKDIR /tmp/
+RUN wget http://beta.quicklisp.org/quicklisp.lisp
+ADD docker/install-quicklisp.lisp /tmp/install.lisp
+
+RUN sbcl --non-interactive --load install.lisp
+
+WORKDIR /root
+
+RUN rm /tmp/install.lisp /tmp/quicklisp.lisp
 
 RUN ln -s /usr/local/bin/sbcl /usr/bin/sbcl
-
-RUN apt-get update && apt-get -y upgrade && apt-get update
 
 RUN apt-get -y install mr
 
@@ -47,4 +64,7 @@ ENV SHELL /bin/bash
 
 RUN mr checkout
 
-RUN cd /root/quicklisp/local-projects/arfe && git pull   && ./configure --prefix=/usr/local && make && make install && make clean
+RUN cd /root/quicklisp/local-projects/arfe && git pull && \
+    ./configure --prefix=/usr/local && make && make install && make clean
+
+RUN apt-get clean
