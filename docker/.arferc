@@ -1,2 +1,7 @@
+;; -*- mode:lisp -*-
+
+(setq swank::*loopback-interface* "0.0.0.0")
+(swank:create-server :dont-close t)
+
 (setq *gtfl-address* "0.0.0.0")
 (start-gtfl)
