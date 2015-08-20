@@ -1,5 +1,9 @@
 FROM davazp/quicksbcl
 
+ADD docker/quicklisp-update.sh /usr/local/bin/quicklisp-update.sh
+
+RUN quicklisp-update.sh
+
 RUN rm -fr /tmp/install.lisp /tmp/quicklisp.lisp /tmp/sbcl /tmp/sbcl.tar.bz2
 
 RUN ln -s /usr/local/bin/sbcl /usr/bin/sbcl
