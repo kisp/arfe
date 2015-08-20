@@ -10,7 +10,12 @@
 
 (in-package #:arfe.gtfl-output-graph)
 
-(defun output-graph (graph)
+(defgeneric output-graph (graph))
+
+(defmethod output-graph ((graph cons))
+  (output-graph (from-adj graph)))
+
+(defmethod output-graph ((graph graph))
   (uiop:with-temporary-file (:stream stream :pathname pathname)
     (to-dot graph :stream stream)
     :close-stream
