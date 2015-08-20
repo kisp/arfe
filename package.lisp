@@ -3,7 +3,7 @@
 (defpackage :arfe
   (:use :common-lisp :alexandria :argsem-soundness
    :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
-   :graph :graph-dot
+   :graph :graph-dot :gtfl
    :lparallel
         :arfe.generate-non-isomorphic :arfe.dc-ds-eq :arfe.good-example
    :arfe.gtfl-output-graph)

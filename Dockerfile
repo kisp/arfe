@@ -14,7 +14,7 @@ RUN apt-get -y install graphviz
 
 RUN apt-get -y install rlwrap
 
-RUN apt-get -y install tree 
+RUN apt-get -y install tree
 
 RUN apt-get -y install screen
 
@@ -24,8 +24,8 @@ ADD docker/.screenrc .screenrc
 ADD docker/.mrconfig .mrconfig
 ADD docker/.gitconfig .gitconfig
 
+ENV CDPATH /root/quicklisp/local-projects
+
 RUN mr checkout
 
 RUN cd /root/quicklisp/local-projects/arfe && git pull   && ./configure --prefix=/usr/local && make && make install && make clean
-
-ENV CDPATH /root/quicklisp/local-projects
