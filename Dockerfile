@@ -27,7 +27,9 @@ RUN apt-get -y install build-essential
 RUN wget http://pallini.di.uniroma1.it/nauty25r9.tar.gz
 RUN tar xzf nauty25r9.tar.gz
 RUN cd nauty25r9 && ./configure && make # && make install
-# RUN rm -rf nauty25r9.tar.gz nauty25r9
+RUN cd nauty25r9 && rm runalltests install-sh config*
+RUN cd nauty25r9 && find -type f -executable | xargs -I% cp -v % /usr/local/bin/%
+RUN rm -rf nauty25r9.tar.gz nauty25r9
 
 ADD docker/.screenrc .screenrc
 ADD docker/.mrconfig .mrconfig
