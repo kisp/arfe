@@ -19,6 +19,11 @@
 (push 'sb-ext:enable-debugger *init-hooks*)
 
 (sb-ext:save-lisp-and-die "arfe"
-                          ;; :toplevel #'day-plan::day-plan
+                          :toplevel (lambda ()
+                                      (let ((init-file "~/.arferc"))
+                                        (when (probe-file init-file)
+                                          (load init-file)))
+                                      (format t "Welcome to ARFE!~%")
+                                      (sb-impl::toplevel-init))
                           :executable t
                           :compression nil)

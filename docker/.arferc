@@ -1,0 +1,2 @@
+(setq *gtfl-address* "0.0.0.0")
+(start-gtfl)

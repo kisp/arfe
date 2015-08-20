@@ -25,6 +25,7 @@ RUN apt-get -y install netcat
 ADD docker/.screenrc .screenrc
 ADD docker/.mrconfig .mrconfig
 ADD docker/.gitconfig .gitconfig
+ADD docker/.arferc .arferc
 
 ENV CDPATH /root/quicklisp/local-projects
 
