@@ -16,10 +16,11 @@
                (:file "dc-ds-eq")
                (:file "good-example")
                (:file "gtfl-output-graph")
+               (:file "directg")
                (:file "package" :depends-on ("generate" "dc-ds-eq" "good-example"
-                                                        "gtfl-output-graph"))
-               (:file "arfe" :depends-on ("package"))
-               )
+                                                        "gtfl-output-graph"
+                                                        "directg"))
+               (:file "arfe" :depends-on ("package")))
   :depends-on (:alexandria :swank
                :argsem-soundness :graph-adj
                :trivial-graph-canonization
