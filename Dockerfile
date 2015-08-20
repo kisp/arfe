@@ -1,5 +1,7 @@
 FROM davazp/quicksbcl
 
+RUN rm -f /tmp/install.lisp /tmp/quicklisp.lisp /tmp/sbcl /tmp/sbcl.tar.bz2
+
 RUN ln -s /usr/local/bin/sbcl /usr/bin/sbcl
 
 RUN apt-get update && apt-get -y upgrade && apt-get update
