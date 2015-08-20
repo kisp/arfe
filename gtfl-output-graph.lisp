@@ -40,11 +40,14 @@
        (:hr)
        (:h1 "graph " (who:str (incf i))))
       (arfe.gtfl-output-graph:gtfl-output-graph x)
-      (gtfl:gtfl-out
-       (:div :style "font-size:150%"
-             (:p "complete-extensions: "
-                 (who:esc (prin1-to-string (list-extensions x #'complete-extension-p))))
-             (:p "preferred-extensions: "
-                 (who:esc (prin1-to-string (list-extensions x #'preferred-extension-p))))
-             (:p "stable-extensions: "
-                 (who:esc (prin1-to-string (list-extensions x #'stable-extension-p)))))))))
+      (let ((x (if (consp x)
+                   (from-adj x)
+                   x)))
+        (gtfl:gtfl-out
+         (:div :style "font-size:150%"
+               (:p "complete-extensions: "
+                   (who:esc (prin1-to-string (list-extensions x #'complete-extension-p))))
+               (:p "preferred-extensions: "
+                   (who:esc (prin1-to-string (list-extensions x #'preferred-extension-p))))
+               (:p "stable-extensions: "
+                   (who:esc (prin1-to-string (list-extensions x #'stable-extension-p))))))))))
