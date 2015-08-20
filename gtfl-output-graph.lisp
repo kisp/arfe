@@ -20,7 +20,9 @@
     (to-dot graph :stream stream)
     :close-stream
     (multiple-value-bind (output error-output exit-code)
-        (uiop:run-program "set -o pipefail ; dot -Tsvg -Grankdir=LR | sed -e '1,3d'"
+        (uiop:run-program (list "/usr/bin/bash"
+                                "-c"
+                                "set -o pipefail ; dot -Tsvg -Grankdir=LR | sed -e '1,3d'")
                           :input pathname
                           :output :string
                           :error-output :string)
