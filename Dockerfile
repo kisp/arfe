@@ -1,6 +1,6 @@
 FROM davazp/quicksbcl
 
-RUN rm -f /tmp/install.lisp /tmp/quicklisp.lisp /tmp/sbcl /tmp/sbcl.tar.bz2
+RUN rm -fr /tmp/install.lisp /tmp/quicklisp.lisp /tmp/sbcl /tmp/sbcl.tar.bz2
 
 RUN ln -s /usr/local/bin/sbcl /usr/bin/sbcl
 
@@ -39,6 +39,7 @@ ADD docker/.gitconfig .gitconfig
 ADD docker/.arferc .arferc
 
 ENV CDPATH /root/quicklisp/local-projects
+ENV SHELL /bin/bash
 
 RUN mr checkout
 
