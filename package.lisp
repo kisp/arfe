@@ -5,5 +5,6 @@
    :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
    :graph :graph-dot
    :lparallel
-        :arfe.generate-non-isomorphic :arfe.dc-ds-eq)
+        :arfe.generate-non-isomorphic :arfe.dc-ds-eq :arfe.good-example
+   :arfe.gtfl-output-graph)
   (:export))

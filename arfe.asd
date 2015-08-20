@@ -12,14 +12,17 @@
   :components ((:static-file "version" :pathname #p"version.lisp-expr")
                (:file "generate")
                (:file "dc-ds-eq")
-               (:file "package" :depends-on ("generate" "dc-ds-eq"))
+               (:file "good-example")
+               (:file "gtfl-output-graph")
+               (:file "package" :depends-on ("generate" "dc-ds-eq" "good-example"
+                                                        "gtfl-output-graph"))
                (:file "arfe" :depends-on ("package"))
                )
   :depends-on (:alexandria
                :argsem-soundness :graph-adj
                :trivial-graph-canonization
                :graph-apx :graph-tgf :graph-dot
-               :lparallel))
+               :lparallel :gtfl))
 
 (defmethod perform ((op test-op)
                     (system (eql (find-system :arfe))))
