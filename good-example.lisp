@@ -39,20 +39,21 @@
   (connectedp (graph-of graph)))
 
 (defun good-example-p (graph)
-  (let ((complete-extensions (list-extensions graph #'complete-extension-p))
-        (preferred-extensions (list-extensions graph #'preferred-extension-p))
-        (stable-extensions (list-extensions graph #'stable-extension-p)))
+  (let ((graph (from-adj graph)))
     (and (connectedp* graph)
-         (sseql/= complete-extensions preferred-extensions stable-extensions))))
+         (let ((complete-extensions (list-extensions graph #'complete-extension-p))
+               (preferred-extensions (list-extensions graph #'preferred-extension-p))
+               (stable-extensions (list-extensions graph #'stable-extension-p)))
+           (sseql/= complete-extensions preferred-extensions stable-extensions)))))
 
 (defun find-good-example
     (&optional
        (graphs (mapcar #'from-adj
                        (generate-non-isomorphic 3 :irreflexive t))))
-  (find-if #'good-example-p graphs))
+  (pfind-if #'good-example-p graphs))
 
 (defun list-good-examples
     (&optional
        (graphs (mapcar #'from-adj
                        (generate-non-isomorphic 3 :irreflexive t))))
-  (remove-if-not #'good-example-p graphs))
+  (premove-if-not #'good-example-p graphs))
