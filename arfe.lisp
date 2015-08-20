@@ -22,6 +22,7 @@
                                      (asdf:find-system :arfe)))))
       (format t "Loading ~A...~%" file)
       (let ((symbol (intern (format nil "*~A*" (string-upcase (pathname-name file))))))
+        (eval `(defvar ,symbol))
         (push symbol symbols)
         (with-open-gzip-file (input file)
           (setf (symbol-value symbol)
