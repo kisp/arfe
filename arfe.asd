@@ -2,6 +2,8 @@
 
 (in-package :asdf-user)
 
+(pushnew :hunchentoot-no-ssl *features)
+
 (defsystem :arfe
   :name "arfe"
   :description "argumentation framework explorer"
