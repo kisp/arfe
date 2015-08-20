@@ -1,1 +1,2 @@
+escape ^AA
 shell "/bin/bash"
