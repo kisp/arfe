@@ -20,10 +20,10 @@
                                                         "gtfl-output-graph"))
                (:file "arfe" :depends-on ("package"))
                )
-  :depends-on (:alexandria
+  :depends-on (:alexandria :swank
                :argsem-soundness :graph-adj
                :trivial-graph-canonization
-               :graph-apx :graph-tgf :graph-dot
+                           :graph-apx :graph-tgf :graph-dot
                :lparallel :gtfl))
 
 (defmethod perform ((op test-op)
