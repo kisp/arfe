@@ -27,25 +27,7 @@ RUN rm /tmp/install.lisp /tmp/quicklisp.lisp
 
 RUN ln -s /usr/local/bin/sbcl /usr/bin/sbcl
 
-RUN apt-get -y install mr
-
-RUN apt-get -y install man
-
-RUN apt-get -y install git
-
-RUN apt-get -y install graphviz
-
-RUN apt-get -y install rlwrap
-
-RUN apt-get -y install tree
-
-RUN apt-get -y install screen
-
-RUN apt-get -y install nvi
-
-RUN apt-get -y install netcat
-
-RUN apt-get -y install build-essential
+RUN apt-get -y install mr man git graphviz rlwrap tree screen nvi netcat build-essential
 
 RUN wget http://pallini.di.uniroma1.it/nauty25r9.tar.gz
 RUN tar xzf nauty25r9.tar.gz
