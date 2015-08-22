@@ -49,4 +49,5 @@ RUN mr checkout
 RUN cd /root/quicklisp/local-projects/arfe && git pull && \
     ./configure --prefix=/usr/local && make && make install && make clean
 
-RUN apt-get clean
+# cleanup package manager
+RUN apt-get autoclean && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
