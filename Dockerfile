@@ -43,6 +43,7 @@ ADD docker/.arferc .arferc
 
 ENV CDPATH /root/quicklisp/local-projects
 ENV SHELL /bin/bash
+ENV SBCL_HOME /usr/local/lib/sbcl
 
 RUN mr checkout
 
