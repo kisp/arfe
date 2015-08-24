@@ -26,7 +26,7 @@
               (uiop:run-program "gzip -9" :input ,tmp-pathname :output ,pathname)
               (values-list ,values))))))))
 
-(defvar *data*)
+(defvar *data* nil)
 
 (defun load-data (&rest symbols)
   (let (loaded-symbols)
