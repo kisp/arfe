@@ -48,8 +48,7 @@
 
 (defun find-good-example
     (&optional
-       (graphs (mapcar #'from-adj
-                       (generate-non-isomorphic 3 :irreflexive t))))
+       (graphs (generate-non-isomorphic 3 :irreflexive t)))
   (pfind-if #'good-example-p graphs))
 
 (defun list-good-examples
