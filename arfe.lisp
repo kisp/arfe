@@ -28,14 +28,20 @@
 
 (defvar *data* nil)
 
+(defun data-file2symbol (file)
+  (intern (format nil "*~A*" (string-upcase (pathname-name file)))))
+
+(defun list-data-files ()
+  (directory
+   (merge-pathnames "data/*.gz"
+                    (asdf:component-pathname
+                     (asdf:find-system :arfe)))))
+
 (defun load-data (&rest symbols)
   (let (loaded-symbols)
-    (dolist (file (directory
-                   (merge-pathnames "data/*.gz"
-                                    (asdf:component-pathname
-                                     (asdf:find-system :arfe)))))
+    (dolist (file (list-data-files))
 
-      (let ((symbol (intern (format nil "*~A*" (string-upcase (pathname-name file))))))
+      (let ((symbol (data-file2symbol file)))
         (when (member symbol symbols)
           (format t "Loading ~A...~%" file)
           (eval `(defvar ,symbol))
