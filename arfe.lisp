@@ -23,22 +23,32 @@
 
 (defvar *data*)
 
-(defun load-data ()
-  (let (symbols)
+(defun load-data (&rest symbols)
+  (let (loaded-symbols)
     (dolist (file (directory
                    (merge-pathnames "data/*.gz"
                                     (asdf:component-pathname
                                      (asdf:find-system :arfe)))))
-      (format t "Loading ~A...~%" file)
+
       (let ((symbol (intern (format nil "*~A*" (string-upcase (pathname-name file))))))
-        (eval `(defvar ,symbol))
-        (push symbol symbols)
-        (with-open-gzip-file (input file)
-          (setf (symbol-value symbol)
-                (loop for form = (read input nil :eof)
-                      until (eql form :eof)
-                      collect form)))))
-    (setq *data* (nreverse symbols))))
+        (when (member symbol symbols)
+          (format t "Loading ~A...~%" file)
+          (eval `(defvar ,symbol))
+          (push symbol loaded-symbols)
+          (with-open-gzip-file (input file)
+            (setf (symbol-value symbol)
+                  (loop for form = (read input nil :eof)
+                        until (eql form :eof)
+                        collect form))))))
+    (dolist (x loaded-symbols)
+      (pushnew x *data*))
+    (list-data)))
+
+(defun unload-data (&rest symbols)
+  (dolist (x symbols)
+    (setq *data* (remove x *data*))
+    (makunbound x))
+  (list-data))
 
 (defun list-data ()
   *data*)
