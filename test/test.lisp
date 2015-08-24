@@ -39,3 +39,6 @@
 
 (deftest list-good-examples.1
   (finishes (list-good-examples)))
+
+(deftest load-data.1
+  (finishes (load-data)))

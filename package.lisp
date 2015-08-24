@@ -20,4 +20,5 @@
    :trivial-graph-canonization
    )
   #+sbcl(:import-from :sb-ext #:quit #:exit)
-  (:export))
+  (:export
+   #:load-data))
