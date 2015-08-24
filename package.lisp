@@ -22,4 +22,5 @@
   #+sbcl(:import-from :sb-ext #:quit #:exit)
   (:export
    #:load-data
-   #:list-data))
+   #:list-data
+   #:with-open-gzip-file))
