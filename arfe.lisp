@@ -10,6 +10,8 @@
        (with-open-file (,var ,tmp-pathname)
          ,@body))))
 
+(defvar *data*)
+
 (defun load-data ()
   (let (symbols)
     (dolist (file (directory
@@ -25,4 +27,7 @@
                 (loop for form = (read input nil :eof)
                       until (eql form :eof)
                       collect form)))))
-    (nreverse symbols)))
+    (setq *data* (nreverse symbols))))
+
+(defun list-data ()
+  *data*)

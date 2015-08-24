@@ -21,4 +21,5 @@
    )
   #+sbcl(:import-from :sb-ext #:quit #:exit)
   (:export
-   #:load-data))
+   #:load-data
+   #:list-data))
