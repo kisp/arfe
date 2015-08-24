@@ -13,13 +13,18 @@
           (with-open-file (,var ,tmp-pathname)
             ,@body))))
     (:output
-     (with-unique-names (tmp-pathname values)
-       `(let (,values)
-          (uiop:with-temporary-file (:pathname ,tmp-pathname :stream ,var :direction :output)
-            (setq ,values (multiple-value-list (progn ,@body)))
-            :close-stream
-            (uiop:run-program "gzip -9" :input ,tmp-pathname :output ,pathname)
-            (values-list ,values)))))))
+     (once-only (pathname)
+       (with-unique-names (tmp-pathname values)
+         `(let (,values)
+            (uiop:with-temporary-file (:pathname ,tmp-pathname :stream ,var :direction :output)
+              (setq ,values (multiple-value-list (progn ,@body)))
+              :close-stream
+              (when (probe-file ,pathname)
+                (delete-file ,pathname))
+              (with-open-file (output ,pathname :direction :output)
+                output)
+              (uiop:run-program "gzip -9" :input ,tmp-pathname :output ,pathname)
+              (values-list ,values))))))))
 
 (defvar *data*)
 
