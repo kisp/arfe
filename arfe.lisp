@@ -28,14 +28,26 @@
 
 (defvar *data* nil)
 
+(defun arfe-system-dir ()
+  (asdf:component-pathname (asdf:find-system :arfe)))
+
 (defun data-file2symbol (file)
   (intern (format nil "*~A*" (string-upcase (pathname-name file)))))
 
+(defun symbol2data-file (symbol)
+  (labels ((w/o-first-last (x)
+             (subseq x 1 (1- (length x)))))
+    (let ((name (w/o-first-last (string-downcase symbol))))
+      (merge-pathnames
+       (make-pathname :name name :type "gz")
+       (arfe-system-dir)))))
+
 (defun list-data-files ()
   (directory
-   (merge-pathnames "data/*.gz"
-                    (asdf:component-pathname
-                     (asdf:find-system :arfe)))))
+   (merge-pathnames "data/*.gz" (arfe-system-dir))))
+
+(defun list-data-symbols ()
+  (mapcar #'data-file2symbol (list-data-files)))
 
 (defun load-data (&rest symbols)
   (let (loaded-symbols)
@@ -60,6 +72,15 @@
     (setq *data* (remove x *data*))
     (makunbound x))
   (list-data))
+
+(defun save-data-symbol (symbol)
+  (assert (boundp symbol))
+  (let ((file (symbol2data-file symbol)))
+    (with-open-gzip-file (output file
+                          :direction :output)
+      (format t "Saving ~A...~%" file)
+      (dolist (x (symbol-value symbol))
+        (format output "~S~%" x)))))
 
 (defun list-data ()
   *data*)
