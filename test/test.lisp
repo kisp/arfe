@@ -36,3 +36,6 @@
     (is (eql 1 (length (generate-non-isomorphic 1 :irreflexive t))))
     (is (eql 3 (length (generate-non-isomorphic 2 :irreflexive t))))
     (is (eql 16 (length (generate-non-isomorphic 3 :irreflexive t))))))
+
+(deftest list-good-examples.1
+  (finishes (list-good-examples)))
