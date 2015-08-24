@@ -2,9 +2,6 @@
 
 (in-package :arfe)
 
-(defun foo123 ()
-  123)
-
 (defmacro with-open-gzip-file ((var pathname) &body body)
   (with-unique-names (stream tmp-pathname)
     `(uiop:with-temporary-file (:pathname ,tmp-pathname :stream ,stream :direction :output)
