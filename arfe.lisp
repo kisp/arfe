@@ -39,7 +39,8 @@
              (subseq x 1 (1- (length x)))))
     (let ((name (w/o-first-last (string-downcase symbol))))
       (merge-pathnames
-       (make-pathname :name name :type "gz")
+       (make-pathname :name name :type "gz"
+                      :directory '(:relative "data"))
        (arfe-system-dir)))))
 
 (defun list-data-files ()
