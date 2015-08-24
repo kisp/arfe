@@ -54,6 +54,5 @@
 
 (defun list-good-examples
     (&optional
-       (graphs (mapcar #'from-adj
-                       (generate-non-isomorphic 3 :irreflexive t))))
+       (graphs (generate-non-isomorphic 3 :irreflexive t)))
   (premove-if-not #'good-example-p graphs))
