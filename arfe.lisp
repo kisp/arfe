@@ -10,10 +10,6 @@
        (with-open-file (,var ,tmp-pathname)
          ,@body))))
 
-(defun remove-last-char (string)
-  (let ((string (string string)))
-    (subseq string 0 (1- (length string)))))
-
 (defun load-data ()
   (let (symbols)
     (dolist (file (directory
