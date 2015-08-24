@@ -26,12 +26,12 @@
          t)
       (LET ((i2 I))
         (LOOP
-          (COND
-            ((< i2 (LENGTH MORE))
-             (LET ((N2 (NTH i2 MORE)))
-               (WHEN (sseql N N2) (RETURN-FROM sseql/= NIL)))
-             (INCF i2))
-            (T (RETURN NIL)))))))
+           (COND
+             ((< i2 (LENGTH MORE))
+              (LET ((N2 (NTH i2 MORE)))
+                (WHEN (sseql N N2) (RETURN-FROM sseql/= NIL)))
+              (INCF i2))
+             (T (RETURN NIL)))))))
   t)
 
 (defun connectedp* (graph)
