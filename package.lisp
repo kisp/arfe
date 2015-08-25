@@ -5,6 +5,7 @@
    :alexandria
    :arfe.dc-ds-eq
    :arfe.directg
+   :arfe.dot
    :arfe.generate-non-isomorphic
    :arfe.good-example
    :arfe.gtfl-output-graph

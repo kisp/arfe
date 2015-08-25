@@ -10,19 +10,19 @@
 
 (in-package #:arfe.gtfl-output-graph)
 
-(defgeneric output-graph (graph))
+(defgeneric output-graph (graph &optional extension))
 
-(defmethod output-graph ((graph cons))
-  (output-graph (from-adj graph)))
+(defmethod output-graph ((graph cons) &optional extension)
+  (output-graph (from-adj graph) extension))
 
-(defmethod output-graph ((graph graph))
+(defmethod output-graph ((graph graph) &optional extension)
   (uiop:with-temporary-file (:stream stream :pathname pathname)
-    (to-dot graph :stream stream)
+    (arfe.dot:print-af-to-dot-with-extension graph extension stream)
     :close-stream
     (multiple-value-bind (output error-output exit-code)
         (uiop:run-program (list "/bin/bash"
                                 "-c"
-                                "set -o pipefail ; dot -Tsvg -Grankdir=LR | sed -e '1,3d'")
+                                "set -o pipefail ; dot -Tsvg | sed -e '1,3d'")
                           :input pathname
                           :output :string
                           :error-output :string)
@@ -30,8 +30,8 @@
         (error "~A" (list output error-output exit-code)))
       output)))
 
-(defun gtfl-output-graph (graph)
-  (gtfl:gtfl-out (:p (who:str (output-graph graph)))))
+(defun gtfl-output-graph (graph &optional extension)
+  (gtfl:gtfl-out (:p (who:str (output-graph graph extension)))))
 
 (defun gtfl-output-graphs (graphs)
   (let ((i -1))

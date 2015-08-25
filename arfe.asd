@@ -15,11 +15,13 @@
                (:file "generate")
                (:file "dc-ds-eq")
                (:file "good-example")
-               (:file "gtfl-output-graph")
+               (:file "gtfl-output-graph" :depends-on ("dot"))
                (:file "directg")
+               (:file "dot")
                (:file "package" :depends-on ("generate" "dc-ds-eq" "good-example"
                                                         "gtfl-output-graph"
-                                                        "directg"))
+                                                        "directg"
+                                                        "dot"))
                (:file "arfe" :depends-on ("package")))
   :depends-on (:alexandria :swank
                :argsem-soundness :graph-adj
