@@ -1,7 +1,7 @@
 FROM debian:latest
 
 # Install dependencies from Debian repositories
-RUN apt-get update && apt-get install -y make wget bzip2
+RUN apt-get update && apt-get install -y make wget bzip2 curl
 
 # Install SBCL from the tarball binaries.
 RUN wget http://prdownloads.sourceforge.net/sbcl/sbcl-1.2.9-x86-64-linux-binary.tar.bz2 \
