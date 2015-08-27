@@ -11,6 +11,7 @@
    :arfe.gtfl-output-graph
    :arfe.pl2af
    :argsem-soundness
+   :clpl
    :common-lisp
    :graph
    :graph-adj
