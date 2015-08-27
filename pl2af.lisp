@@ -36,7 +36,7 @@
   "Does argument a undercut argument b?"
   (find-if (lambda (x)
              (formula-eqv (argument-conclusion a)
-                          x))
+                          (negate-formula x)))
            (argument-formulas b)))
 
 (defun build-arguments-from-formulas (formulas)
