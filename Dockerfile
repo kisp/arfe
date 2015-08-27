@@ -13,21 +13,26 @@ RUN wget http://prdownloads.sourceforge.net/sbcl/sbcl-1.2.9-x86-64-linux-binary.
     cd / && \
     rm -rf /tmp/sbcl*
 
+RUN ln -s /usr/local/bin/sbcl /usr/bin/sbcl
+
 ENV HOME /root
 
+# quicklisp
 WORKDIR /tmp/
 RUN wget http://beta.quicklisp.org/quicklisp.lisp
 ADD docker/install-quicklisp.lisp /tmp/install.lisp
-
 RUN sbcl --non-interactive --load install.lisp
-
-WORKDIR /root
-
 RUN rm /tmp/install.lisp /tmp/quicklisp.lisp
 
-RUN ln -s /usr/local/bin/sbcl /usr/bin/sbcl
+# pauldist
+ADD docker/quicklisp-setup-pauldist.lisp /tmp/quicklisp-setup-pauldist.lisp
+RUN sbcl --script /tmp/quicklisp-setup-pauldist.lisp
+RUN rm /tmp/quicklisp-setup-pauldist.lisp
+
 
 RUN apt-get -y install mr man git graphviz rlwrap tree screen nvi netcat build-essential
+
+WORKDIR /root
 
 RUN wget http://pallini.di.uniroma1.it/nauty25r9.tar.gz
 RUN tar xzf nauty25r9.tar.gz
