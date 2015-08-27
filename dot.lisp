@@ -20,21 +20,26 @@
       (add-edge new-graph (mapcar #'m edge)))
     new-graph))
 
+(defun convert-graph-to-abc-if-needed (graph)
+  (if (every #'integerp (nodes graph))
+      (convert-graph-to-abc graph)
+      graph))
+
 (defun sub-print (graph node-attrs stream)
   (let ((*print-case* :downcase))
     (to-dot graph
-            :attributes '(("rankdir" . "LR"))
-            :node-attrs node-attrs
-            :stream stream)))
+	    :attributes '(("rankdir" . "LR"))
+	    :node-attrs node-attrs
+	    :stream stream)))
 
 (defun print-af-to-dot (graph &optional (stream *standard-output*))
-  (sub-print (convert-graph-to-abc graph) nil stream))
+  (sub-print (convert-graph-to-abc-if-needed graph) nil stream))
 
 (defun print-af-to-dot-with-extension (graph extension &optional (stream *standard-output*))
   (let ((extension (mapcar #'m extension)))
-    (sub-print (convert-graph-to-abc graph)
-               `(("shape" .,(lambda (x) (when (member x extension)
-                                          "diamond")))
-                 ("style" . ,(lambda (x) (when (member x extension)
-                                           "bold"))))
-               stream)))
+    (sub-print (convert-graph-to-abc-if-needed graph)
+	       `(("shape" .,(lambda (x) (when (member x extension)
+					  "diamond")))
+		 ("style" . ,(lambda (x) (when (member x extension)
+					   "bold"))))
+	       stream)))
