@@ -1,7 +1,19 @@
 FROM debian:latest
 
 # Install dependencies from Debian repositories
-RUN apt-get update && apt-get install -y make wget bzip2 curl
+RUN apt-get update && apt-get install -y make wget bzip2 curl \
+  mr man git graphviz rlwrap tree screen nvi netcat build-essential
+
+# cleanup package manager
+RUN apt-get autoclean && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# nauty
+RUN wget http://pallini.di.uniroma1.it/nauty25r9.tar.gz
+RUN tar xzf nauty25r9.tar.gz
+RUN cd nauty25r9 && ./configure && make # && make install
+RUN cd nauty25r9 && rm runalltests install-sh config*
+RUN cd nauty25r9 && find -type f -executable | xargs -I% cp -v % /usr/local/bin/%
+RUN rm -rf nauty25r9.tar.gz nauty25r9
 
 # Install SBCL from the tarball binaries.
 RUN wget http://prdownloads.sourceforge.net/sbcl/sbcl-1.2.9-x86-64-linux-binary.tar.bz2 \
@@ -12,14 +24,12 @@ RUN wget http://prdownloads.sourceforge.net/sbcl/sbcl-1.2.9-x86-64-linux-binary.
     sh install.sh && \
     cd / && \
     rm -rf /tmp/sbcl*
-
 RUN ln -s /usr/local/bin/sbcl /usr/bin/sbcl
 
 ENV HOME /root
 
 # quicklisp
-WORKDIR /tmp/
-RUN wget http://beta.quicklisp.org/quicklisp.lisp
+RUN cd /tmp && wget http://beta.quicklisp.org/quicklisp.lisp
 ADD docker/install-quicklisp.lisp /tmp/install.lisp
 RUN sbcl --non-interactive --load install.lisp
 RUN rm /tmp/install.lisp /tmp/quicklisp.lisp
@@ -28,18 +38,6 @@ RUN rm /tmp/install.lisp /tmp/quicklisp.lisp
 ADD docker/quicklisp-setup-pauldist.lisp /tmp/quicklisp-setup-pauldist.lisp
 RUN sbcl --script /tmp/quicklisp-setup-pauldist.lisp
 RUN rm /tmp/quicklisp-setup-pauldist.lisp
-
-
-RUN apt-get -y install mr man git graphviz rlwrap tree screen nvi netcat build-essential
-
-WORKDIR /root
-
-RUN wget http://pallini.di.uniroma1.it/nauty25r9.tar.gz
-RUN tar xzf nauty25r9.tar.gz
-RUN cd nauty25r9 && ./configure && make # && make install
-RUN cd nauty25r9 && rm runalltests install-sh config*
-RUN cd nauty25r9 && find -type f -executable | xargs -I% cp -v % /usr/local/bin/%
-RUN rm -rf nauty25r9.tar.gz nauty25r9
 
 ADD docker/.screenrc .screenrc
 ADD docker/.mrconfig .mrconfig
@@ -52,8 +50,6 @@ ENV SBCL_HOME /usr/local/lib/sbcl
 
 RUN mr checkout
 
+# build arfe
 RUN cd /root/quicklisp/local-projects/arfe && git pull && \
     ./configure --prefix=/usr/local && make && make install && make clean
-
-# cleanup package manager
-RUN apt-get autoclean && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
