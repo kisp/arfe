@@ -31,7 +31,7 @@ ENV HOME /root
 # quicklisp
 RUN cd /tmp && wget http://beta.quicklisp.org/quicklisp.lisp
 ADD docker/install-quicklisp.lisp /tmp/install.lisp
-RUN sbcl --non-interactive --load /tmp/install.lisp
+RUN cd /tmp && sbcl --non-interactive --load install.lisp
 RUN rm /tmp/install.lisp /tmp/quicklisp.lisp
 
 # pauldist
