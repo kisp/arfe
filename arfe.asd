@@ -18,16 +18,18 @@
                (:file "gtfl-output-graph" :depends-on ("dot"))
                (:file "directg")
                (:file "dot")
+               (:file "pl2af")
                (:file "package" :depends-on ("generate" "dc-ds-eq" "good-example"
                                                         "gtfl-output-graph"
                                                         "directg"
-                                                        "dot"))
+                                                        "dot"
+                                                        "pl2af"))
                (:file "arfe" :depends-on ("package")))
   :depends-on (:alexandria :swank
                :argsem-soundness :graph-adj
                :trivial-graph-canonization
                            :graph-apx :graph-tgf :graph-dot
-               :lparallel :gtfl :gzip-stream))
+               :lparallel :gtfl :gzip-stream :clpl))
 
 (defmethod perform ((op test-op)
                     (system (eql (find-system :arfe))))

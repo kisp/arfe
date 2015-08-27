@@ -42,3 +42,15 @@
 
 (deftest load-data.1
   (finishes (load-data)))
+
+(deftest pl2af.1
+  (is (set-equal '(a1 a2 a3)
+                 (graph:nodes (pl2af '(x y z)))))
+  (is (set-equal '()
+                 (graph:edges (pl2af '(x y z))))))
+
+(deftest pl2af.2
+  (is (set-equal '(a1 a2)
+                 (graph:nodes (pl2af '(x (clpl:imp x y))))))
+  (is (set-equal '()
+                 (graph:edges (pl2af '(x (clpl:imp x y)))))))

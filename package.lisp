@@ -9,6 +9,7 @@
    :arfe.generate-non-isomorphic
    :arfe.good-example
    :arfe.gtfl-output-graph
+   :arfe.pl2af
    :argsem-soundness
    :common-lisp
    :graph
