@@ -39,6 +39,8 @@ ADD docker/quicklisp-setup-pauldist.lisp /tmp/quicklisp-setup-pauldist.lisp
 RUN sbcl --script /tmp/quicklisp-setup-pauldist.lisp
 RUN rm /tmp/quicklisp-setup-pauldist.lisp
 
+WORKDIR /root
+
 ADD docker/.screenrc .screenrc
 ADD docker/.mrconfig .mrconfig
 ADD docker/.gitconfig .gitconfig
