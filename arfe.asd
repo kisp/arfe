@@ -19,7 +19,7 @@
                (:file "directg")
                (:file "dot")
                (:file "pl2af")
-               (:file "")
+               (:file "local-arfex")
                (:file "package"
                 :depends-on ("generate"
                              "dc-ds-eq"
@@ -28,6 +28,7 @@
                              "directg"
                              "dot"
                              "pl2af"
+                             "local-arfex"
                              ))
                (:file "arfe" :depends-on ("package")))
   :depends-on (:alexandria :swank
