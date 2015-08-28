@@ -10,6 +10,7 @@
    :arfe.good-example
    :arfe.gtfl-output-graph
    :arfe.pl2af
+   :arfe.local-arfex
    :argsem-soundness
    :clpl
    :common-lisp

@@ -19,9 +19,9 @@
                (:file "directg")
                (:file "dot")
                (:file "pl2af")
+               (:file "")
                (:file "package"
-                :depends-on (
-                             "generate"
+                :depends-on ("generate"
                              "dc-ds-eq"
                              "good-example"
                              "gtfl-output-graph"
