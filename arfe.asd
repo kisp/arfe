@@ -19,11 +19,16 @@
                (:file "directg")
                (:file "dot")
                (:file "pl2af")
-               (:file "package" :depends-on ("generate" "dc-ds-eq" "good-example"
-                                                        "gtfl-output-graph"
-                                                        "directg"
-                                                        "dot"
-                                                        "pl2af"))
+               (:file "package"
+                :depends-on (
+                             "generate"
+                             "dc-ds-eq"
+                             "good-example"
+                             "gtfl-output-graph"
+                             "directg"
+                             "dot"
+                             "pl2af"
+                             ))
                (:file "arfe" :depends-on ("package")))
   :depends-on (:alexandria :swank
                :argsem-soundness :graph-adj
