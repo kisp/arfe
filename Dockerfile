@@ -54,4 +54,5 @@ RUN mr checkout
 
 # build arfe
 RUN cd /root/quicklisp/local-projects/arfe && git pull && \
+    xz -dk data2/graphs.sqlite.xz && \
     ./configure --prefix=/usr/local && make && make install && make clean
