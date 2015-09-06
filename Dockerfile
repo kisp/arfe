@@ -2,7 +2,8 @@ FROM debian:latest
 
 # Install dependencies from Debian repositories
 RUN apt-get update && apt-get install -y make wget bzip2 curl \
-  mr man git graphviz rlwrap tree screen nvi netcat build-essential sqlite3
+  mr man git graphviz rlwrap tree screen nvi netcat build-essential sqlite3 \
+  pandoc
 
 # cleanup package manager
 RUN apt-get autoclean && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
