@@ -2,6 +2,7 @@
 
 (defpackage :arfe
   (:use
+   :named-readtables
    :alexandria
    :arfe.dc-ds-eq
    :arfe.directg

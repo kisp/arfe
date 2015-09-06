@@ -12,6 +12,7 @@
                  (vers (merge-pathnames "version.lisp-expr" *load-truename*))
                (read vers))
   :components ((:static-file "version" :pathname #p"version.lisp-expr")
+               (:file "readtable" :depends-on ("package"))
                (:file "generate")
                (:file "dc-ds-eq")
                (:file "good-example")
