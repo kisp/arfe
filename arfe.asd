@@ -36,7 +36,7 @@
                :trivial-graph-canonization
                            :graph-apx :graph-tgf :graph-dot
                :lparallel :gtfl :gzip-stream :clpl
-               :sqlite))
+               :sqlite :cl-interpol :named-readtables))
 
 (defmethod perform ((op test-op)
                     (system (eql (find-system :arfe))))
