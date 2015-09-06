@@ -35,7 +35,8 @@
                :argsem-soundness :graph-adj
                :trivial-graph-canonization
                            :graph-apx :graph-tgf :graph-dot
-               :lparallel :gtfl :gzip-stream :clpl))
+               :lparallel :gtfl :gzip-stream :clpl
+               :sqlite))
 
 (defmethod perform ((op test-op)
                     (system (eql (find-system :arfe))))
