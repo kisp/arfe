@@ -7,13 +7,13 @@ RUN apt-get update && apt-get install -y make wget bzip2 curl \
 # cleanup package manager
 RUN apt-get autoclean && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# nauty
-RUN wget http://pallini.di.uniroma1.it/nauty25r9.tar.gz
-RUN tar xzf nauty25r9.tar.gz
-RUN cd nauty25r9 && ./configure && make # && make install
-RUN cd nauty25r9 && rm runalltests install-sh config*
-RUN cd nauty25r9 && find -type f -executable | xargs -I% cp -v % /usr/local/bin/%
-RUN rm -rf nauty25r9.tar.gz nauty25r9
+# # nauty
+# RUN wget http://pallini.di.uniroma1.it/nauty25r9.tar.gz
+# RUN tar xzf nauty25r9.tar.gz
+# RUN cd nauty25r9 && ./configure && make # && make install
+# RUN cd nauty25r9 && rm runalltests install-sh config*
+# RUN cd nauty25r9 && find -type f -executable | xargs -I% cp -v % /usr/local/bin/%
+# RUN rm -rf nauty25r9.tar.gz nauty25r9
 
 # Install SBCL from the tarball binaries.
 RUN wget http://prdownloads.sourceforge.net/sbcl/sbcl-1.2.9-x86-64-linux-binary.tar.bz2 \
