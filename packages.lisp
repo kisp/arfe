@@ -8,7 +8,8 @@
   (:use :common-lisp :alexandria :iterate)
   (:export
    #:generate-example
-   #:generate-examples))
+   #:generate-examples
+   #:slow))
 
 (defpackage :arfe.gtfl-output-graph
   (:use :common-lisp :alexandria :argsem-soundness
@@ -30,7 +31,7 @@
    :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
    :graph :graph-dot
    :lparallel
-        :arfe.generate-non-isomorphic
+	:arfe.generate-non-isomorphic
    :argsem-soundness)
   (:import-from :metabang.bind #:bind)
   (:export
@@ -56,7 +57,7 @@
    :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
    :graph :graph-dot
    :lparallel
-        :arfe.generate-non-isomorphic)
+	:arfe.generate-non-isomorphic)
   (:import-from :metabang.bind #:bind)
   (:export
    #:dc-ds-eq
@@ -92,4 +93,3 @@
    #:load-data
    #:list-data
    #:with-open-gzip-file))
-
