@@ -2,6 +2,9 @@
 
 (in-package :arfe)
 
+(defmacro in-readtable* (name)
+  `(progn (in-readtable ,name) ',name))
+
 (defmacro with-open-gzip-file ((var pathname &key (direction :input))
                                &body body)
   (ecase direction
@@ -78,7 +81,7 @@
   (assert (boundp symbol))
   (let ((file (symbol2data-file symbol)))
     (with-open-gzip-file (output file
-                          :direction :output)
+                                 :direction :output)
       (format t "Saving ~A...~%" file)
       (dolist (x (symbol-value symbol))
         (format output "~S~%" x)))))
