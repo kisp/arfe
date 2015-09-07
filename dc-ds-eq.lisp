@@ -1,15 +1,3 @@
-(defpackage :arfe.dc-ds-eq
-  (:use :common-lisp :alexandria :argsem-soundness
-   :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
-   :graph :graph-dot
-   :lparallel
-        :arfe.generate-non-isomorphic)
-  (:import-from :metabang.bind #:bind)
-  (:export
-   #:dc-ds-eq
-   #:equivalence-classes
-   #:estimate-dc-ds-eq-classes))
-
 (in-package :arfe.dc-ds-eq)
 
 (defun equivalence-classes (list &key (test #'eql) (key #'identity))

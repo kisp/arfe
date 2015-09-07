@@ -1,11 +1,5 @@
 ;;; -*- Mode:Lisp; Syntax:ANSI-Common-Lisp; Coding:utf-8 -*-
 
-(defpackage :arfe.local-arfex
-  (:use :common-lisp :alexandria :iterate)
-  (:export
-   #:generate-example
-   #:generate-examples))
-
 (in-package :arfe.local-arfex)
 
 (defvar *arfex-dir* "/home/paul/unis/MasterThesis/ksmaster-hagen/p/arfex/")

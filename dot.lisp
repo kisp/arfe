@@ -1,11 +1,5 @@
 ;;; -*- Mode:Lisp; Syntax:ANSI-Common-Lisp; Coding:utf-8 -*-
 
-(defpackage :arfe.dot
-  (:use :common-lisp :alexandria :graph :graph-dot)
-  (:export
-   #:print-af-to-dot
-   #:print-af-to-dot-with-extension))
-
 (in-package #:arfe.dot)
 
 (defun m (x)

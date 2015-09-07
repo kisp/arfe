@@ -1,18 +1,5 @@
 ;;; -*- Mode:Lisp; Syntax:ANSI-Common-Lisp; Coding:utf-8 -*-
 
-(defpackage :arfe.good-example
-  (:use :common-lisp :alexandria :argsem-soundness
-   :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
-   :graph :graph-dot
-   :lparallel
-        :arfe.generate-non-isomorphic
-   :argsem-soundness)
-  (:import-from :metabang.bind #:bind)
-  (:export
-   #:find-good-example
-   #:good-example-p
-   #:list-good-examples))
-
 (in-package :arfe.good-example)
 
 (defun sseql (a b)

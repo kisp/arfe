@@ -1,10 +1,3 @@
-(defpackage :arfe.generate-non-isomorphic
-  (:use :common-lisp :alexandria :argsem-soundness
-   :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
-   :graph :graph-dot
-   :lparallel)
-  (:export #:generate-non-isomorphic))
-
 (in-package :arfe.generate-non-isomorphic)
 
 (defun invoke-with-broken-list (list-size part-size fn)

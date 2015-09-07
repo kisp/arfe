@@ -1,13 +1,5 @@
 ;;; -*- Mode:Lisp; Syntax:ANSI-Common-Lisp; Coding:utf-8 -*-
 
-(defpackage :arfe.gtfl-output-graph
-  (:use :common-lisp :alexandria :argsem-soundness
-   :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
-   :graph :graph-dot)
-  (:export
-   #:gtfl-output-graph
-   #:gtfl-output-graphs))
-
 (in-package #:arfe.gtfl-output-graph)
 
 (defgeneric output-graph (graph &optional extension))

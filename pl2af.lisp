@@ -1,11 +1,5 @@
 ;;; -*- Mode:Lisp; Syntax:ANSI-Common-Lisp; Coding:utf-8 -*-
 
-(defpackage :arfe.pl2af
-  (:use :common-lisp :alexandria :argsem-soundness :graph :clpl)
-  (:import-from :metabang.bind #:bind)
-  (:export
-   #:pl2af))
-
 (in-package :arfe.pl2af)
 
 (defun sorted-powerset (list)
