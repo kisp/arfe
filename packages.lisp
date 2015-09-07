@@ -1,3 +1,10 @@
+(defpackage :arfe.scribble
+  (:use #:common-lisp #:meta #:named-readtables)
+  (:export
+   #:parse-bracket
+   #:read-skribe-bracket
+   #:unbalanced-paren))
+
 (defpackage :arfe.pl2af
   (:use :common-lisp :alexandria :argsem-soundness :graph :clpl)
   (:import-from :metabang.bind #:bind)

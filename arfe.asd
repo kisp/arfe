@@ -12,9 +12,9 @@
                  (vers (merge-pathnames "version.lisp-expr" *load-truename*))
                (read vers))
   :serial t
-  :components ((:static-file "version" :pathname #p"version.lisp-expr")
-	       (:file "scribble-patch")
+  :components ((:static-file "version" :pathname #p"version.lisp-expr")	       
 	       (:file "packages")
+	       (:file "scribble")
                (:file "readtable")
                (:file "generate")
                (:file "dc-ds-eq")
@@ -31,7 +31,7 @@
                            :graph-apx :graph-tgf :graph-dot
                :lparallel :gtfl :gzip-stream :clpl
                :sqlite :cl-interpol :named-readtables
-	       :scribble))
+	       :meta))
 
 (defmethod perform ((op test-op)
                     (system (eql (find-system :arfe))))
