@@ -4,6 +4,7 @@
 
 (defreadtable arfe
   (:merge :standard)
+  (:case :invert)
   (:macro-char
    #\[ #'arfe.scribble:read-skribe-bracket)
   (:macro-char

@@ -2,9 +2,19 @@
 
 (in-package #:arfe.dot)
 
-(defun m (x)
+(defvar *conver-graph-use-underscore* t)
+
+(defun malpha (x)
   (or (nth x '(a b c d e f g h i j k l m n o p q r s t u v))
       (error "not found")))
+
+(defun mindex (x)
+  (symbolicate "A_" (princ-to-string (1+ x))))
+
+(defun m (x)
+  (if *conver-graph-use-underscore*
+      (mindex x)
+      (malpha x)))
 
 (defun convert-graph-to-abc (graph)
   (let ((new-graph (make-instance 'digraph)))

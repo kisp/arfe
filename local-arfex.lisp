@@ -84,7 +84,8 @@
 	(with-dribbling
 	  (with-generation-package
 	    (with-current-directory (*default-pathname-defaults*)
-	      (load* example-file)))))
+	      (let ((*readtable* (copy-readtable)))
+		(load* example-file))))))
       (setf (gethash (file-namestring example-file)
 		     *timings*)
 	    (/ (- (get-internal-real-time) start)

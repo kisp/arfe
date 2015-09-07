@@ -50,7 +50,9 @@
   (:use :common-lisp :alexandria :graph :graph-dot)
   (:export
    #:print-af-to-dot
-   #:print-af-to-dot-with-extension))
+   #:print-af-to-dot-with-extension
+   #:convert-graph-to-abc-if-needed
+   #:*conver-graph-use-underscore*))
 
 (defpackage :arfe.directg
   (:use :common-lisp :alexandria :argsem-soundness
