@@ -3,7 +3,7 @@
 (in-package :arfe)
 
 (defreadtable arfe
-  (:merge :standard)
+  (:merge :standard :scribble-skribe)
   (:dispatch-macro-char
    #\# #\?
    #'cl-interpol::interpol-reader))

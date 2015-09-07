@@ -13,6 +13,7 @@
                (read vers))
   :serial t
   :components ((:static-file "version" :pathname #p"version.lisp-expr")
+	       (:file "scribble-patch")
 	       (:file "packages")
                (:file "readtable")
                (:file "generate")
@@ -29,7 +30,8 @@
                :trivial-graph-canonization
                            :graph-apx :graph-tgf :graph-dot
                :lparallel :gtfl :gzip-stream :clpl
-               :sqlite :cl-interpol :named-readtables))
+               :sqlite :cl-interpol :named-readtables
+	       :scribble))
 
 (defmethod perform ((op test-op)
                     (system (eql (find-system :arfe))))
