@@ -5,9 +5,11 @@
 (defvar *conver-graph-use-underscore* t)
 
 (defun malpha (x)
-  (or (nth x '(|a| |b| |c| |d| |e| |f| |g| |h| |i| |j| |k| |l| |m| |n| |o|
-               |p| |q| |r| |s| |t| |u| |v|))
-      (error "not found")))
+  (let ((symbol
+          (or (nth x '(|a| |b| |c| |d| |e| |f| |g| |h| |i| |j| |k| |l| |m| |n| |o|
+                       |p| |q| |r| |s| |t| |u| |v|))
+              (error "not found"))))
+    (intern (string symbol))))
 
 (defun mindex (x)
   (symbolicate "A_" (princ-to-string (1+ x))))
