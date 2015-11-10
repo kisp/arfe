@@ -3,7 +3,7 @@
 (defun equivalence-classes (list &key (test #'eql) (key #'identity))
   (labels ((rec (list classes)
              (cond ((null list)
-                    (mapcar #'cdr classes))
+                    (nreverse (mapcar (compose #'nreverse #'cdr) classes)))
                    (t
                     (if-let ((class (find (car list) classes
                                           :key #'second
