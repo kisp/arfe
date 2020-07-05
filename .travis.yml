@@ -6,10 +6,10 @@ sudo: required
 env:
   matrix:
     - LISP=sbcl-bin
-    - LISP=ccl-bin
-    - LISP=abcl
-    - LISP=clisp
-    - LISP=ecl
+    #- LISP=ccl-bin
+    #- LISP=abcl
+    #- LISP=clisp
+    #- LISP=ecl
 
 install:
   - curl -L https://raw.githubusercontent.com/snmsts/roswell/release/scripts/install-for-ci.sh | sh
