@@ -21,7 +21,7 @@
 (defpackage :arfe.gtfl-output-graph
   (:use :common-lisp :alexandria :argsem-soundness
    :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
-   :graph :graph-dot)
+   :graph :graph/dot)
   (:export
    #:gtfl-output-graph
    #:gtfl-output-graphs))
@@ -29,14 +29,14 @@
 (defpackage :arfe.generate-non-isomorphic
   (:use :common-lisp :alexandria :argsem-soundness
    :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
-   :graph :graph-dot
+   :graph :graph/dot
    :lparallel)
   (:export #:generate-non-isomorphic))
 
 (defpackage :arfe.good-example
   (:use :common-lisp :alexandria :argsem-soundness
    :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
-   :graph :graph-dot
+   :graph :graph/dot
    :lparallel
 	:arfe.generate-non-isomorphic
    :argsem-soundness)
@@ -47,7 +47,7 @@
    #:list-good-examples))
 
 (defpackage :arfe.dot
-  (:use :common-lisp :alexandria :graph :graph-dot)
+  (:use :common-lisp :alexandria :graph :graph/dot)
   (:export
    #:print-af-to-dot
    #:print-af-to-dot-with-extension
@@ -57,14 +57,14 @@
 (defpackage :arfe.directg
   (:use :common-lisp :alexandria :argsem-soundness
    :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
-   :graph :graph-dot)
+   :graph :graph/dot)
   (:export
    #:map-directg-file))
 
 (defpackage :arfe.dc-ds-eq
   (:use :common-lisp :alexandria :argsem-soundness
    :graph-adj :trivial-graph-canonization :graph-apx :graph-tgf
-   :graph :graph-dot
+   :graph :graph/dot
    :lparallel
 	:arfe.generate-non-isomorphic)
   (:import-from :metabang.bind #:bind)
@@ -91,7 +91,7 @@
    :graph
    :graph-adj
    :graph-apx
-   :graph-dot
+   :graph/dot
    :graph-tgf
    :gtfl
    :lparallel
