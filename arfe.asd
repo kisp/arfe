@@ -28,7 +28,7 @@
   :depends-on (:alexandria :swank
                :argsem-soundness :graph-adj
                :trivial-graph-canonization
-                           :graph-apx :graph-tgf :graph-dot
+                           :graph-apx :graph-tgf :graph/dot
                :lparallel :gtfl :gzip-stream :clpl
                :sqlite :cl-interpol :named-readtables
 	       :meta))
