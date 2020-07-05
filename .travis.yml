@@ -16,6 +16,7 @@ install:
   - mkdir -p ~/.roswell/lisp/quicklisp/dists/pauldist
   - curl -L http://pauldist.kisp.in/pauldist.txt > ~/.roswell/lisp/quicklisp/dists/pauldist/distinfo.txt
   - touch  ~/.roswell/lisp/quicklisp/dists/pauldist/enabled.txt
+  - cd ~/lisp && wget http://martin-loetzsch.de/gtfl/gtfl.tar.gz && tar -xf gtfl.tar.gz && mv gtfl_0.1.3 gtfl
   - cd ~/lisp && git clone https://github.com/kisp/argsem-soundness.git
   - cd ~/lisp && git clone https://github.com/kisp/graph-adj.git
   - cd ~/lisp && git clone https://github.com/kisp/graph-tgf.git
